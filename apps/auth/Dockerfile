@@ -11,10 +11,10 @@ RUN npm install -g pnpm
 
 RUN pnpm install
 
-COPY apps/reservations apps/reservations
+COPY apps/auth apps/auth
 COPY libs libs
 
-RUN pnpm run build reservations
+RUN pnpm run build auth
 
 FROM node:alpine AS production
 
