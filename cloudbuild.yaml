@@ -54,5 +54,6 @@ steps:
     args:
       - 'push'
       - 'northamerica-south1-docker.pkg.dev/sleepr-445203/payments/production'
-      
-options:   logging: CLOUD_LOGGING_ONLY
+
+options:   
+  logging: CLOUD_LOGGING_ONLY
