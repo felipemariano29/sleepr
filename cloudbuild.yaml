@@ -1,72 +1,56 @@
 steps:
-  # reservaions
+  # reservations
   - name: 'gcr.io/cloud-builders/docker'
-    args: 
-    [
-      'build',
-      '-t',
-      'northamerica-south1-docker.pkg.dev/sleepr-445203/reservations/production',
-      '-f',
-      'apps/reservations/Dockerfile',
-      '.'
-    ]
+    args:
+      - 'build'
+      - '-t'
+      - 'northamerica-south1-docker.pkg.dev/sleepr-445203/reservations/production'
+      - '-f'
+      - 'apps/reservations/Dockerfile'
+      - '.'
   - name: 'gcr.io/cloud-builders/docker'
-    args: 
-    [
-      'push',
-      'northamerica-south1-docker.pkg.dev/sleepr-445203/reservations/production',
-    ]
+    args:
+      - 'push'
+      - 'northamerica-south1-docker.pkg.dev/sleepr-445203/reservations/production'
 
   # auth
-    - name: 'gcr.io/cloud-builders/docker'
-    args: 
-    [
-      'build',
-      '-t',
-      'northamerica-south1-docker.pkg.dev/sleepr-445203/auth/production',
-      '-f',
-      'apps/auth/Dockerfile',
-      '.'
-    ]
   - name: 'gcr.io/cloud-builders/docker'
-    args: 
-    [
-      'push',
-      'northamerica-south1-docker.pkg.dev/sleepr-445203/auth/production',
-    ]
+    args:
+      - 'build'
+      - '-t'
+      - 'northamerica-south1-docker.pkg.dev/sleepr-445203/auth/production'
+      - '-f'
+      - 'apps/auth/Dockerfile'
+      - '.'
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'northamerica-south1-docker.pkg.dev/sleepr-445203/auth/production'
 
   # notifications
-    - name: 'gcr.io/cloud-builders/docker'
-    args: 
-    [
-      'build',
-      '-t',
-      'northamerica-south1-docker.pkg.dev/sleepr-445203/notifications/production',
-      '-f',
-      'apps/notifications/Dockerfile',
-      '.'
-    ]
   - name: 'gcr.io/cloud-builders/docker'
-    args: 
-    [
-      'push',
-      'northamerica-south1-docker.pkg.dev/sleepr-445203/notifications/production',
-    ]
+    args:
+      - 'build'
+      - '-t'
+      - 'northamerica-south1-docker.pkg.dev/sleepr-445203/notifications/production'
+      - '-f'
+      - 'apps/notifications/Dockerfile'
+      - '.'
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'northamerica-south1-docker.pkg.dev/sleepr-445203/notifications/production'
 
   # payments
-    - name: 'gcr.io/cloud-builders/docker'
-    args: 
-    [
-      'build',
-      '-t',
-      'northamerica-south1-docker.pkg.dev/sleepr-445203/payments/production',
-      '-f',
-      'apps/payments/Dockerfile',
-      '.'
-    ]
   - name: 'gcr.io/cloud-builders/docker'
-    args: 
-    [
-      'push',
-      'northamerica-south1-docker.pkg.dev/sleepr-445203/payments/production',
-    ]
+    args:
+      - 'build'
+      - '-t'
+      - 'northamerica-south1-docker.pkg.dev/sleepr-445203/payments/production'
+      - '-f'
+      - 'apps/payments/Dockerfile'
+      - '.'
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'northamerica-south1-docker.pkg.dev/sleepr-445203/payments/production'
