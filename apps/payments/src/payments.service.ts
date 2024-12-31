@@ -16,25 +16,23 @@ export class PaymentsService {
     @Inject(NOTIFICATIONS_SERVICE) private readonly notificationsService: ClientProxy,
   ) {}
 
-  async createCharge({ amount, email }: PaymentsCreateChargeDto) {
-    const paymentIntent = await this.stripe.paymentIntents.create({
-      amount: amount * 100,
-      confirm: true,
-      currency: 'usd',
-      payment_method: 'pm_card_visa',
-      automatic_payment_methods: { enabled: true, allow_redirects: 'never' },
+  async createCharge({ card, amount, email }: PaymentsCreateChargeDto) {
+    const paymentMethod = await this.stripe.paymentMethods.create({
+      type: 'card',
+      card,
     });
 
-    const formattedAmount = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(amount);
+    const paymentIntent = await this.stripe.paymentIntents.create({
+      payment_method: paymentMethod.id,
+      amount: amount * 100,
+      confirm: true,
+      payment_method_types: ['card'],
+      currency: 'usd',
+    });
 
     this.notificationsService.emit('notify_email', {
       email,
-      text: `Your payment of ${formattedAmount} has completed successfully.`,
+      text: `Your payment of $${amount} has completed successfully.`,
     });
 
     return paymentIntent;
